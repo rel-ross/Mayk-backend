@@ -2,8 +2,9 @@
 exports.up = function(knex) {
     return knex.schema.createTable('drawings', (table) => {
         table.increments()
-        table.string('line-coordinates')
-        table.integer('image')
+        table.string('projectName')
+        table.text('lineCoordinates')
+        table.string('image')
    })
 };
 
