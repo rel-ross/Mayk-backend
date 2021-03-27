@@ -39,19 +39,24 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(express.json())
 
-app.post("/upload", upload.single("file"), (request, response) => {
-    // Return the URL the file was uploaded to- optionally, store it
-    // in a database first.
+app.post("/upload", upload.single("image"), (request, response) => {
     response.json({data: request.file.location});
+    image = request.file.location;
+    database('drawings')
+    .insert(drawing)
+    .returning('*')
+    .then(drawing => response.send(image))
 });
-
-
-
-
 
 app.get('/drawings', (_, response) => {
     database('drawings')
         .then(drawings => response.send(drawings))
+})
+
+app.get('/drawings/:id', (request, response) => {
+    database('drawings')
+    .where({id: request.params.id})
+    .then(drawing => response.json(drawing))
 })
 
 app.post('/drawings', (request, response) => {
