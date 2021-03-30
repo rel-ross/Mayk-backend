@@ -68,4 +68,12 @@ app.post('/drawings', (request, response) => {
         .then(drawing => response.send(drawing))
 })
 
+app.delete('/drawings/:id', (request, response) => {
+    database('drawings')
+    .delete()
+    .where({id: request.params.id})
+    .returning('*')
+    .then(drawing => console.log("deleted"))
+})
+
 app.listen(port, () => console.log(`listening at port ${port}`))
