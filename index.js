@@ -76,4 +76,14 @@ app.delete('/drawings/:id', (request, response) => {
     .then(drawing => console.log("deleted"))
 })
 
+app.patch('/drawings/:id', (request, response) => {
+    const drawing  = request.body
+
+    database('drawings')
+        .where('id', request.params.id)
+        .update(drawing)
+        .returning('*')
+        .then(drawing => response.send(drawing))
+})
+
 app.listen(port, () => console.log(`listening at port ${port}`))
