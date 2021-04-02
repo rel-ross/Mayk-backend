@@ -36,13 +36,16 @@ To run this project: <ol>
 
 ## Features
 <ul>
-  <li>TBD</li>
+  <li>Upload project photo</li>
+  <li>Sketch design on project photo </li>
+  <li>Save sketch to be accesed for future reference </li>
 </ul>
 
 
 ## Unfinished Features
  <ul>
-  <li>TBD</li>
+  <li>Implementation of Auth</li>
+  <li>Relational database tables for difference users and their sketches</li>
  </ul>
 
 
